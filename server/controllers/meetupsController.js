@@ -1,9 +1,13 @@
 
 var Meetup = require('../models/meetup')
 
-module.exports.create = function (req, res) {
+module.exports.create = function (err, req, res, next) {
   var meetup = new Meetup(req.body)
-	meetup.save(function(err, result) {
+  debugger
+	meetup.save(function(result) {
+		if (err) {
+			return next(err)
+		}
 		res.json(result)
 	})
 }

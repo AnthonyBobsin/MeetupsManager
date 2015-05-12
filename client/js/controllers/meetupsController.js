@@ -13,6 +13,8 @@ app.controller('meetupsController', ['$scope', '$resource', function($scope, $re
 		meetup.$save(function(result) {
 			$scope.meetups.push(result)
 			$scope.meetupName = ''
+		}, function(error) {
+			console.log('Save failed.')
 		})
 	}
 
